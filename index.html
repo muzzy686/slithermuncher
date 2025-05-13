@@ -334,11 +334,49 @@
     <section id="play" class="game-section">
         <div class="container">
             <h2>Enter the Arena</h2>
-            <div class="game-container">
-                <iframe src="http://slither.com/io" title="Slither Game" allowfullscreen></iframe>
+            <div class="game-notice" style="text-align: center; padding: 30px; background-color: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; color: var(--apple-blue);">Ready to Play Slither?</h3>
+                <p style="margin-bottom: 20px;">Experience the ultimate snake game adventure!</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                    <a href="https://slither.io" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 15px 30px;">Play on Slither.io</a>
+                    <a href="https://www.crazygames.com/game/slither-io" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 15px 30px; background-color: var(--apple-green);">Alternative Site</a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">These external links will open the game in a new tab</p>
             </div>
-            <div class="game-help">
-                <p>Having trouble? Try refreshing the page or check your internet connection.</p>
+            
+            <div class="game-preview" style="width: 100%; max-width: 1200px; height: auto; margin: 30px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);">
+                <img src="https://via.placeholder.com/1200x675/5ac8fa/ffffff?text=Slither+Game+Preview" alt="Slither Game Preview" style="width: 100%; height: auto; display: block;">
+            </div>
+            
+            <div class="game-features" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 20px; text-align: center;">Why Play Slither?</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <div style="background: var(--apple-gray); padding: 20px; border-radius: 8px; flex: 1; min-width: 200px; text-align: center;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" style="margin: 0 auto 10px;">
+                            <circle cx="12" cy="12" r="10" fill="#0071e3" />
+                            <path d="M7 11v2h10v-2H7z" fill="white" />
+                            <path d="M12 7v10M7 12h10" stroke="white" stroke-width="2" />
+                        </svg>
+                        <strong style="display: block; margin-bottom: 5px; font-size: 1.1rem;">Multiplayer Fun</strong>
+                        <p>Compete with players worldwide in real-time battles</p>
+                    </div>
+                    <div style="background: var(--apple-gray); padding: 20px; border-radius: 8px; flex: 1; min-width: 200px; text-align: center;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" style="margin: 0 auto 10px;">
+                            <circle cx="12" cy="12" r="10" fill="#5ac8fa" />
+                            <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                        <strong style="display: block; margin-bottom: 5px; font-size: 1.1rem;">Simple Controls</strong>
+                        <p>Easy to learn, hard to master gameplay</p>
+                    </div>
+                    <div style="background: var(--apple-gray); padding: 20px; border-radius: 8px; flex: 1; min-width: 200px; text-align: center;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" style="margin: 0 auto 10px;">
+                            <circle cx="12" cy="12" r="10" fill="#ff3b30" />
+                            <path d="M12 8v4l3 3" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                        <strong style="display: block; margin-bottom: 5px; font-size: 1.1rem;">Quick Games</strong>
+                        <p>Play for minutes or hours - perfect for any schedule</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
