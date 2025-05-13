@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlitherMuncher - The Ultimate Slither Game Experience</title>
+    <meta name="description" content="Dive into the exciting world of Slither games! Control your snake, eat orbs, grow longer, and dominate the arena.">
+    <meta name="keywords" content="slither, snake game, online game, multiplayer game, slithermuncher">
+    <link rel="canonical" href="https://slithermuncher.xyz">
+    
+    <!-- Standard CSS without Tailwind -->
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0062c3;
+            --apple-gray: #f5f5f7;
+            --apple-dark: #1d1d1f;
+            --apple-green: #5ac8fa;
+            --apple-red: #ff3b30;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--apple-gray);
+            color: var(--apple-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--apple-dark);
+            color: white;
+            padding: 1.5rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        @media (min-width: 768px) {
+            .header-container {
+                flex-direction: row;
+            }
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .logo-container {
+                margin-bottom: 0;
+            }
+        }
+        
+        .logo-icon {
+            height: 40px;
+            width: 40px;
+            margin-right: 12px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--apple-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero p {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--apple-blue);
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--apple-blue-hover);
+        }
+        
+        /* Game Section */
+        .game-section {
+            padding: 3rem 0;
+        }
+        
+        .game-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .game-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .game-help {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.875rem;
+        }
+        
+        /* Guide Section */
+        .guide-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .guide-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .guide-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .guide-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        .guide-item {
+            background-color: var(--apple-gray);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .guide-item h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+        }
+        
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--apple-dark);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        
+        .footer-copyright {
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-copyright {
+                margin-bottom: 0;
+            }
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--apple-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 5C15.8 5 8.4 12.4 8.4 25C8.4 37.6 15.8 45 25 45C34.2 45 41.6 37.6 41.6 25C41.6 12.4 34.2 5 25 5ZM30 30C30 32.8 27.8 35 25 35C22.2 35 20 32.8 20 30C20 27.2 22.2 25 25 25C27.8 25 30 27.2 30 30Z" fill="#5ac8fa"/>
+                    <path d="M42 15C42 12.2 39.8 10 37 10C34.2 10 32 12.2 32 15C32 17.8 34.2 20 37 20C39.8 20 42 17.8 42 15Z" fill="#ff3b30"/>
+                </svg>
+                <span class="logo-text">SlitherMuncher</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#play">Play</a></li>
+                    <li><a href="#guide">Guide</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Slither: Dominate the Arena</h1>
+            <p>Control your snake, devour orbs, grow longer, and outsmart other players in this thrilling multiplayer game!</p>
+            <a href="#play" class="btn-primary">Play Now</a>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="play" class="game-section">
+        <div class="container">
+            <h2>Enter the Arena</h2>
+            <div class="game-container">
+                <iframe src="http://slither.com/io" title="Slither Game" allowfullscreen></iframe>
+            </div>
+            <div class="game-help">
+                <p>Having trouble? Try refreshing the page or check your internet connection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Guide Section -->
+    <section id="guide" class="guide-section">
+        <div class="container">
+            <h2>Game Guide</h2>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <h3>Controls</h3>
+                    <p>Use your mouse to control the direction of your snake. Move the cursor to change direction, and click to speed up temporarily.</p>
+                </div>
+                <div class="guide-item">
+                    <h3>Objective</h3>
+                    <p>Eat glowing orbs to grow your snake longer. The longer you get, the higher your score will be. Avoid colliding with other snakes!</p>
+                </div>
+                <div class="guide-item">
+                    <h3>Strategy</h3>
+                    <p>Try to encircle smaller snakes to eliminate them. When other snakes are eliminated, they leave behind lots of orbs for you to collect.</p>
+                </div>
+                <div class="guide-item">
+                    <h3>Power-Ups</h3>
+                    <p>Keep an eye out for special power-ups that can give you temporary advantages like speed boosts or protective shields.</p>
+                </div>
+                <div class="guide-item">
+                    <h3>Leaderboard</h3>
+                    <p>Compete with players worldwide to get your name on the leaderboard. The longer your snake, the higher your ranking!</p>
+                </div>
+                <div class="guide-item">
+                    <h3>Tips</h3>
+                    <p>Stay close to the edges when you're small. Use your speed boost wisely, and don't be afraid to be aggressive when the opportunity arises!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Game Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Slither</h2>
+            <div class="about-content">
+                <p>Slither is an exciting multiplayer online game inspired by the classic Snake game. Players control a snake-like avatar, consuming glowing orbs to grow longer while avoiding collisions with other players.</p>
+                <p>The game combines strategy, reflexes, and a bit of luck as you navigate through a crowded arena filled with other players all competing to become the longest snake. Unlike the classic Snake game, there are no walls to hit - your only obstacles are other players!</p>
+                <p>Slither has gained popularity worldwide due to its simple mechanics, competitive gameplay, and the thrill of outmaneuvering other players. It's easy to learn but challenging to master, making it perfect for casual and competitive gamers alike.</p>
+                <p>Whether you're playing for a few minutes or hours, Slither offers an addictive gaming experience that keeps players coming back for more. Can you rise to the top of the leaderboard and become the ultimate Slither champion?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-copyright">
+                <p>&copy; 2025 SlitherMuncher.xyz. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
