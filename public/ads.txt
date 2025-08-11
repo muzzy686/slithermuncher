@@ -1,0 +1,3 @@
+# ads.txt file for slithermuncher.xyz
+# This file is a placeholder for future monetization
+# Contact: admin@slithermuncher.xyz
