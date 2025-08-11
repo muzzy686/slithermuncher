@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Maximize, Minimize, HelpCircle, Gamepad2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +12,6 @@ export default function Home() {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
-    // 超时处理
     timeoutRef.current = setTimeout(() => {
       if (isLoading) {
         setIsLoading(false);
@@ -21,7 +19,6 @@ export default function Home() {
       }
     }, 8000);
 
-    // 监听全屏状态变化
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
@@ -78,13 +75,10 @@ export default function Home() {
 
   return (
     <>
-      {/* SEO 头部信息通过 layout.tsx 和 metadata 处理 */}
       <div className="min-h-screen bg-slate-950 text-blue-50 flex flex-col">
-        {/* Header */}
         <header className="sticky top-0 z-50 backdrop-blur-md bg-white/5 border-b border-white/10">
           <div className="container mx-auto px-4 py-3">
             <div className="flex items-center justify-between">
-              {/* Brand */}
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
                   <Gamepad2 className="w-5 h-5 text-white" />
@@ -94,7 +88,6 @@ export default function Home() {
                 </h1>
               </div>
 
-              {/* Actions */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowHelp(true)}
@@ -119,12 +112,9 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Main Content */}
         <main className="flex-1 container mx-auto px-4 py-6">
           <div className="max-w-6xl mx-auto">
-            {/* Game Stage */}
             <div className="relative aspect-video bg-slate-900/50 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-              {/* Loading State */}
               {isLoading && !hasError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-slate-900/80 backdrop-blur-sm">
                   <div className="flex flex-col items-center gap-4">
@@ -143,7 +133,6 @@ export default function Home() {
                 </div>
               )}
 
-              {/* Error State */}
               {hasError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-slate-900/90 backdrop-blur-sm">
                   <div className="text-center max-w-md px-6">
@@ -152,7 +141,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-semibold text-red-300 mb-2">Failed to Load Game</h3>
                     <p className="text-slate-400 mb-6 text-sm leading-relaxed">
-                      The game couldn't load due to network issues or third-party restrictions. 
+                      The game couldn&apos;t load due to network issues or third-party restrictions. 
                       Try refreshing or open the original site.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -175,7 +164,6 @@ export default function Home() {
                 </div>
               )}
 
-              {/* Game iframe */}
               <iframe
                 ref={iframeRef}
                 src="https://slithergame.io/slither-io.embed"
@@ -190,7 +178,6 @@ export default function Home() {
               />
             </div>
 
-            {/* Game Description */}
             <div className="mt-8 text-center max-w-2xl mx-auto">
               <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-300 to-purple-400 bg-clip-text text-transparent">
                 Play Slither.io Instantly
@@ -204,7 +191,6 @@ export default function Home() {
           </div>
         </main>
 
-        {/* Footer */}
         <footer className="border-t border-white/10 bg-slate-900/50">
           <div className="container mx-auto px-4 py-6">
             <div className="text-center text-slate-400 text-sm">
@@ -222,7 +208,6 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Help Modal */}
       {showHelp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-white/20 rounded-xl max-w-lg w-full p-6 shadow-2xl">
@@ -241,7 +226,7 @@ export default function Home() {
                 <h4 className="font-semibold text-blue-200 mb-2">How to Play</h4>
                 <p className="text-sm">
                   Control your snake with mouse movement or arrow keys. Eat glowing orbs to grow longer. 
-                  Avoid hitting other snakes or you'll explode and become food!
+                  Avoid hitting other snakes or you&apos;ll explode and become food!
                 </p>
               </div>
               

@@ -12,9 +12,10 @@ export const metadata: Metadata = {
   creator: 'slithermuncher.xyz',
   publisher: 'slithermuncher.xyz',
   robots: 'index, follow',
-  canonical: 'https://slithermuncher.xyz/',
+  alternates: {
+    canonical: 'https://slithermuncher.xyz/',
+  },
   
-  // OpenGraph
   openGraph: {
     type: 'website',
     url: 'https://slithermuncher.xyz/',
@@ -31,7 +32,6 @@ export const metadata: Metadata = {
     ],
   },
   
-  // Twitter
   twitter: {
     card: 'summary_large_image',
     site: '@slithermuncher',
@@ -41,25 +41,21 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   
-  // App specific
   applicationName: 'slithermuncher.xyz',
   generator: 'Next.js',
   
-  // Mobile
   viewport: {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
   },
   
-  // Icons
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   
-  // Manifest
   manifest: '/manifest.json',
 };
 
@@ -71,12 +67,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://slithergame.io" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         
-        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -104,13 +98,11 @@ export default function RootLayout({
           }}
         />
         
-        {/* Security headers via meta (basic CSP) */}
         <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; frame-src https://slithergame.io; img-src 'self' data: https://*; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*;" />
       </head>
       <body className={inter.className}>
         {children}
         
-        {/* Google Analytics 4 (准备就绪，可配置) */}
         {process.env.NODE_ENV === 'production' && (
           <>
             <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
